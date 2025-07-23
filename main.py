@@ -14,17 +14,24 @@ def main():
 	print(f"Executing command at{curr_dir}")
 	check_norm()
 	check_compile(curr_dir)
+	checkflag()
+
+def find_flags(name):
+	if name == "mess":
+		if (sys.argv.index("gitp") != -1):
+			return sys.argv[sys.argv.index("gitp") + 1]
+
+def checkflag():
 	if "gitp" in sys.argv and PUSH_FLAG and len(sys.argv) > 2:
 		print(Fore.RESET)
 		os.system("find . -name '*.out' -type f && find . -name '*.out' -type f -delete")
-		os.system(f"git add . && git commit -m {sys.argv[2]} && git push")
+		os.system(f"git add . && git commit -m {find_flags("mess")} && git push")
 	elif "gitp" in sys.argv and "-force" in sys.argv:
 		print(Fore.RESET)
 		os.system("find . -name '*.out' -type f && find . -name '*.out' -type f -delete")
-		os.system(f"git add . && git commit -m {sys.argv[2]} && git push")
+		os.system(f"git add . && git commit -m {find_flags("mess")} && git push")
 	elif "gitp" in sys.argv:
 		print("Can't push")
-
 
 def check_norm():
 	global PUSH_FLAG
