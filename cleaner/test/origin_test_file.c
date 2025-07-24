@@ -18,6 +18,6 @@ int	main(void)
 	dsbfjds */ vvuui    //test
 	printf("");   // test
 	return  ( 1 );
-	test{{ test } };	// fdeytzdy a
-	test[ pos[fdgd ] ];
+	test{{ test } }  ;	// fdeytzdy a
+	test[ pos[fdgd ] ] ;
 }

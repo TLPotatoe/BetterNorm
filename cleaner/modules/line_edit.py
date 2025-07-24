@@ -20,6 +20,11 @@ def fix_space_in_brackets(line):
     return line
 
 
+def fix_space_semicolon(line):
+    line = re.sub(r"\s*;", r";", line)
+    return line
+
+
 def fix_edition_in_line(cleaned_line, line_number, states):
     tmp_line = cleaned_line
     cleaned_line = fix_multiple_spaces(cleaned_line)
@@ -29,10 +34,16 @@ def fix_edition_in_line(cleaned_line, line_number, states):
     tmp_line = cleaned_line
     cleaned_line = fix_space_in_brackets(cleaned_line)
     if cleaned_line != tmp_line:
-        edit_log("Space arround brackets", line_number)
+        edit_log("Space(s) arround brackets", line_number)
 
     tmp_line = cleaned_line.rstrip("\n")
     cleaned_line = cleaned_line.rstrip()
     if cleaned_line != tmp_line:
-        edit_log("Space at end of line", line_number)
+        edit_log("Space(s) at end of line", line_number)
+
+    tmp_line = cleaned_line
+    cleaned_line = fix_space_semicolon(cleaned_line)
+    if cleaned_line != tmp_line:
+        edit_log("Space(s) before semicolon", line_number)
+
     return cleaned_line
