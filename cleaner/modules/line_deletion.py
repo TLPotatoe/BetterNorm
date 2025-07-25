@@ -7,7 +7,10 @@ def clean_comment_line(line, in_function, in_comment_block):
     if in_function:
         if in_comment_block:
             if line.count("*/") >= 1:
-                line = re.sub(r"^([ \t]*)[^*/]*\*/\s*", r"\1", line)
+                if line.count("/*") >= 1:
+                    line = re.sub(r"/\*.*\*/\s*", r"", line)
+                else:
+                    line = re.sub(r"^([ \t]*)[^*/]*\*/\s*", r"\1", line)
                 if line.strip() == "":
                     return ""
             else:
@@ -70,5 +73,5 @@ def delete_invalid_line(line, line_number, states):
     if cleaned_line == "":
         delete_log("Multiple empty lines", line_number)
         return ""
-    states["in_comment_block"] = (states["in_comment_block"] - line.count("*/")) < 0
+    states["in_comment_block"] = (states["in_comment_block"] - line.count("*/")) > 0
     return cleaned_line

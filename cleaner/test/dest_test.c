@@ -6,8 +6,9 @@ printf*/
 
 int	main(void)
 {
-	/* test */
 	vvuui
+	testtsqt /*hfdsk*/
+	/* fdsfsd */ fdsfd
 	coucou == jfio;
 	coucou != dnslkf;
 	dfs /= dfs;
@@ -18,7 +19,7 @@ int	main(void)
 	i--;
 	i = dsffs + fds;
 	fds = fds - fds;
-	fdsfsd =  / fds;
+	fdsfsd = ds / fds;
 	return (1);
 	test{{test}};
 	test[pos[fdgd]];
