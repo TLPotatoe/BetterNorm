@@ -1,9 +1,6 @@
 import re
 from modules.utils.log import edit_log
 
-# TODO : opérateur entouré d'espaces -> sauf si 2 opérateur collé
-# TODO : enlever les espaces devant les ";"
-
 
 def fix_multiple_spaces(line):
     line = re.sub(r" {2,}", " ", line)
@@ -20,8 +17,16 @@ def fix_space_in_brackets(line):
     return line
 
 
-def fix_space_semicolon(line):
+def fix_space_before_semicolon(line):
     line = re.sub(r"\s*;", r";", line)
+    return line
+
+
+def fix_space_operator(line):
+    line = re.sub(r"\s*([=!\-\*\+/]{0,1})=\s*", r" \1= ", line)
+    line = re.sub(r"\s*([\-\+]{2,2})\s*", r"\1", line)
+    # We edit only if there is no other operator beside
+    line = re.sub(r"(?<![\+\-\*/%=!])\s*([\+\-\*/%])\s*(?![\+\-\*/%=!])", r" \1 ", line)
     return line
 
 
@@ -42,8 +47,13 @@ def fix_edition_in_line(cleaned_line, line_number, states):
         edit_log("Space(s) at end of line", line_number)
 
     tmp_line = cleaned_line
-    cleaned_line = fix_space_semicolon(cleaned_line)
+    cleaned_line = fix_space_before_semicolon(cleaned_line)
     if cleaned_line != tmp_line:
         edit_log("Space(s) before semicolon", line_number)
+
+    tmp_line = cleaned_line
+    cleaned_line = fix_space_operator(cleaned_line)
+    if cleaned_line != tmp_line:
+        edit_log("Space(s) arround operator", line_number)
 
     return cleaned_line
