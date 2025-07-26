@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+from modules.utils.log import delete_log, edit_log
 from modules.line_deletion import delete_invalid_line
 from modules.line_edit import (
     fix_edition_in_line,
@@ -28,12 +29,27 @@ def copy_file_properly(src, dest):
         "in_comment_block": 0,
         "last_was_empty": 0,
         "in_function": 0,
+        "is_declaration": 0,
+        "declaration_passed": 0,
+        "space_declaration_place": 0,
     }
     with open(src, "r") as source_file:
         lines = source_file.readlines()
     with open(dest, "w") as dest_file:
         for i in range(len(lines)):
             update_status(states, lines[i])
+            if (
+                states["is_declaration"] == 0
+                and states["declaration_passed"] == 1
+                and states["space_declaration_place"] == 0
+            ):
+                dest_file.write("\n")
+                if lines[i].strip() != "":
+                    edit_log("Space needed after variable declaration", i + 1)
+                states["space_declaration_place"] = 1
+            if states["in_function"]:
+                if lines[i].strip() == "":
+                    delete_log("Empty line in function", i + 1)
             lines[i] = clean_line(lines[i], i + 1, states)
             if lines[i] != "":
                 dest_file.write(lines[i])

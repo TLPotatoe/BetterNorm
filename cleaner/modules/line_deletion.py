@@ -3,6 +3,9 @@ from enums.forbidden import forbidden_functions, forbidden_includes
 from modules.utils.log import delete_log
 
 
+# TODO : if empty line in function and variable space already placed destroy
+
+
 def clean_comment_line(line, in_function, in_comment_block):
     if in_function:
         if in_comment_block:

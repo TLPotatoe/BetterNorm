@@ -6,9 +6,10 @@ printf*/
 
 int	main(void)
 {
-	vvuui
-	testtsqt /*hfdsk*/
-	/* fdsfsd */ fdsfd
+	int	i;
+	void	k;
+	t_fdsf	test;
+
 	coucou == jfio;
 	coucou != dnslkf;
 	dfs /= dfs;

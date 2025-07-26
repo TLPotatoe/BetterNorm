@@ -10,14 +10,9 @@ printf*/
 
 int	main(void)
 {
-	/* test */
-	// test
-	/* /*
-	* dsbfkjs
-	* fgd
-	dsbfjds */ vvuui    //test
-	testtsqt /*hfdsk*/
-	/* fdsfsd */ fdsfd
+	int	i;
+	void	k;
+	t_fdsf	test;
 	printf("");   // test
 	coucou==jfio;
 	coucou!=dnslkf;
@@ -27,6 +22,7 @@ int	main(void)
 	fdsfs-=fdsds;
 	i ++;
 	i-- ;
+
 	i= dsffs+fds;
 	fds =fds -fds;
 	fdsfsd= ds / fds;
