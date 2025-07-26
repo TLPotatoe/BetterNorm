@@ -5,10 +5,8 @@ from modules.line_edit import (
     fix_edition_in_line,
 )
 from modules.check_pattern import update_status
-
-
-# TODO : Organiser en plusieurs fichiers, ENUM, big error, error, warning, ...
-# TODO : Faire des warning genre ligne to long, to many function, ...
+from modules.utils.display import norminette_display, start_display
+import subprocess
 
 
 def clean_line(line, number, states):
@@ -49,7 +47,10 @@ def main():
     parser.add_argument("dest", help="Destination File")
 
     args = parser.parse_args()
+    start_display()
     copy_file_properly(args.src, args.dest)
+    norminette_display()
+    subprocess.run(["norminette", args.dest])
 
 
 if __name__ == "__main__":

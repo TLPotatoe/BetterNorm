@@ -8,12 +8,9 @@ def fix_multiple_spaces(line):
 
 
 def fix_space_in_brackets(line):
-    line = re.sub(r"\(\s*", "(", line)
-    line = re.sub(r"\s*\)", ")", line)
-    line = re.sub(r"\{\s*", "{", line)
-    line = re.sub(r"\s*\}", "}", line)
-    line = re.sub(r"\[\s*", "[", line)
-    line = re.sub(r"\s*\]", "]", line)
+    line = re.sub(r"\(\s*(.*)\s*\)", r"(\1)", line)
+    line = re.sub(r"\{\s*(.*)\s*\}", r"{\1}", line)
+    line = re.sub(r"\[\s*(.*)\s*\]", r"[\1]", line)
     return line
 
 
@@ -25,8 +22,12 @@ def fix_space_before_semicolon(line):
 def fix_space_operator(line):
     line = re.sub(r"\s*([=!\-\*\+/]{0,1})=\s*", r" \1= ", line)
     line = re.sub(r"\s*([\-\+]{2,2})\s*", r"\1", line)
-    # We edit only if there is no other operator beside
-    line = re.sub(r"(?<![\+\-\*/%=!])\s*([\+\-\*/%])\s*(?![\+\-\*/%=!])", r" \1 ", line)
+    # We edit only if there is no other operator beside/var
+    line = re.sub(
+        r"(?<![\+\-\*/%=!])\s*([\+\-\*/%])\s*(?![\+\-\*/%=!abcdefghijklmnopqrstuvwxyz])",
+        r" \1 ",
+        line,
+    )
     return line
 
 
