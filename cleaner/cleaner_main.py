@@ -5,7 +5,7 @@ from modules.line_edit import (
     fix_edition_in_line,
 )
 from modules.check_pattern import update_status
-from modules.utils.display import norminette_display, start_display
+from modules.utils.display import start_display, norminette_display, think_display
 import subprocess
 
 
@@ -51,6 +51,7 @@ def main():
     copy_file_properly(args.src, args.dest)
     norminette_display()
     subprocess.run(["norminette", args.dest])
+    think_display()
 
 
 if __name__ == "__main__":
