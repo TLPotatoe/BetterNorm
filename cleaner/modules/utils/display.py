@@ -29,3 +29,4 @@ def think_display():
         f"\033[1;{35}m==========================================================\n\033[0m"
     )
     print("- Space arround operator '*' because of conflict with pointer")
+    print("- Space after ',' in double because conflict with other coma")

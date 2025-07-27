@@ -1,5 +1,5 @@
 /*
- *  blabla
+* blabla
 printf*/
 //bdsjkjksdf
 				//dsbfkjs
@@ -24,4 +24,18 @@ int	main(void)
 	return (1);
 	test{{test}};
 	test[pos[fdgd]];
+}
+
+int fds()
+{
+	int	test;
+
+	ds
+}
+
+void test()
+{
+	char *dns;
+
+	fds
 }

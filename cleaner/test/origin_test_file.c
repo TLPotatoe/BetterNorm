@@ -26,7 +26,20 @@ int	main(void)
 	i= dsffs+fds;
 	fds =fds -fds;
 	fdsfsd= ds / fds;
-	return  ( 1 );
+	return   ( 1 );
 	test{{ test } }  ;	// fdeytzdy a
 	test[ pos[fdgd ] ] ;
+}
+int fds()
+{
+	int	test;
+	printf();
+	ds
+}
+void test()
+{
+	char *dns;
+
+	printf();
+	fds
 }

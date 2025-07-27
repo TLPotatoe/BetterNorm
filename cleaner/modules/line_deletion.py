@@ -35,6 +35,8 @@ def clean_forbidden_import(line):
     for include in forbidden_includes:
         if include in line:
             return ""
+    if re.search(r".*.c\b", line) and re.search("include", line):
+        return ""
     return line
 
 

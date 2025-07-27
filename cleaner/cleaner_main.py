@@ -32,12 +32,14 @@ def copy_file_properly(src, dest):
         "is_declaration": 0,
         "declaration_passed": 0,
         "space_declaration_place": 0,
+        "function_passed": 0,
     }
     with open(src, "r") as source_file:
         lines = source_file.readlines()
     with open(dest, "w") as dest_file:
         for i in range(len(lines)):
             update_status(states, lines[i])
+            # space after variables declaration
             if (
                 states["is_declaration"] == 0
                 and states["declaration_passed"] == 1
@@ -47,14 +49,25 @@ def copy_file_properly(src, dest):
                 if lines[i].strip() != "":
                     edit_log("Space needed after variable declaration", i + 1)
                 states["space_declaration_place"] = 1
+            # space after function
+            if states["in_function"] == 0 and states["function_passed"] == 1:
+                if lines[i].strip() != "":
+                    dest_file.write("\n")
+                    edit_log("Space needed between function", i + 1)
+                states["function_passed"] = 0
+            # Empty line in function
             if states["in_function"]:
                 if lines[i].strip() == "":
                     delete_log("Empty line in function", i + 1)
             lines[i] = clean_line(lines[i], i + 1, states)
+            # Write the line if not empty
             if lines[i] != "":
                 dest_file.write(lines[i])
 
 
+# TODO : si pas de dest -> src
+# TODO : supprimer les espace après les types -> mettre un tab
+# TODO : nettoyer le copy_file_properly
 def main():
     parser = argparse.ArgumentParser(
         description="Create a copy of a c file but clean basic norminette errors"
