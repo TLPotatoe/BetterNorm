@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+from modules.line_add import add_line_after_var_declaration, add_line_between_function
 from modules.utils.log import delete_log, edit_log
 from modules.line_deletion import delete_invalid_line
 from modules.line_edit import (
@@ -39,22 +40,8 @@ def copy_file_properly(src, dest):
     with open(dest, "w") as dest_file:
         for i in range(len(lines)):
             update_status(states, lines[i])
-            # space after variables declaration
-            if (
-                states["is_declaration"] == 0
-                and states["declaration_passed"] == 1
-                and states["space_declaration_place"] == 0
-            ):
-                dest_file.write("\n")
-                if lines[i].strip() != "":
-                    edit_log("Space needed after variable declaration", i + 1)
-                states["space_declaration_place"] = 1
-            # space after function
-            if states["in_function"] == 0 and states["function_passed"] == 1:
-                if lines[i].strip() != "":
-                    dest_file.write("\n")
-                    edit_log("Space needed between function", i + 1)
-                states["function_passed"] = 0
+            add_line_after_var_declaration(lines[i], dest_file, states, i + 1)
+            add_line_between_function(lines[i], dest_file, states, i + 1)
             # Empty line in function
             if states["in_function"]:
                 if lines[i].strip() == "":

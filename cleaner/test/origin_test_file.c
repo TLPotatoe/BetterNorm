@@ -26,12 +26,15 @@ int	main(void)
 	i= dsffs+fds;
 	fds =fds -fds;
 	fdsfsd= ds / fds;
+
 	return   ( 1 );
 	test{{ test } }  ;	// fdeytzdy a
 	test[ pos[fdgd ] ] ;
 	dssdf,fdsf,fds;
 	3213,312
 }
+
+
 int fds()
 {
 	int	test;
