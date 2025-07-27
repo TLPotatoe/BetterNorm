@@ -29,6 +29,8 @@ int	main(void)
 	return   ( 1 );
 	test{{ test } }  ;	// fdeytzdy a
 	test[ pos[fdgd ] ] ;
+	dssdf,fdsf,fds;
+	3213,312
 }
 int fds()
 {

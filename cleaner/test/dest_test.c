@@ -24,6 +24,8 @@ int	main(void)
 	return (1);
 	test{{test}};
 	test[pos[fdgd]];
+	dssdf, fdsf, fds;
+	3213,312
 }
 
 int fds()

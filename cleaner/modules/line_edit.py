@@ -46,7 +46,7 @@ def fix_space_operator(line, states):
             line,
         )
         # coma
-        line = re.sub(r",\s*", r", ", line)
+        line = re.sub(r"(?<![0123456789]),\s*(?![0123456789])", r", ", line)
     return line
 
 
