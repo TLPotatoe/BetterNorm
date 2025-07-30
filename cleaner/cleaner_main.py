@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from modules.line_add import add_line_after_var_declaration, add_line_between_function
-from modules.utils.log import delete_log, edit_log
+from modules.utils.log import delete_log
 from modules.line_deletion import delete_invalid_line
 from modules.line_edit import (
     fix_edition_in_line,
@@ -52,21 +52,18 @@ def copy_file_properly(src, dest):
                 dest_file.write(lines[i])
 
 
-# TODO : si pas de dest -> src
-# TODO : supprimer les espace après les types -> mettre un tab
-# TODO : nettoyer le copy_file_properly
 def main():
     parser = argparse.ArgumentParser(
         description="Create a copy of a c file but clean basic norminette errors"
     )
     parser.add_argument("src", help="Source File")
-    parser.add_argument("dest", help="Destination File")
+    parser.add_argument("dest", nargs="?", help="Destination File")
 
     args = parser.parse_args()
     start_display()
-    copy_file_properly(args.src, args.dest)
+    copy_file_properly(args.src, (args.dest if args.dest else args.src))
     norminette_display()
-    subprocess.run(["norminette", args.dest])
+    subprocess.run(["norminette", (args.dest if args.dest else args.src)])
     think_display()
 
 

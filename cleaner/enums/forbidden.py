@@ -20,4 +20,4 @@ forbidden_functions = [
     "atoi",
 ]
 
-forbidden_includes = ["<stdio.h>", "<strings.h>"]
+forbidden_includes = ["<stdio.h>"]
