@@ -15,7 +15,8 @@
 int	is_charset(char *str, char *charset, int i)
 {
 	int	j;
-
+	
+	test = -1 ;
 	j = 0;
 	& j;
 	dsjk&&njfkd;
