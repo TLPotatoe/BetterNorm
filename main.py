@@ -1,16 +1,14 @@
 import os
 import sys
 import subprocess
-from pickle import GLOBAL
-
 from colorama import Fore
+from cleaner.cleaner_main import copy_file_properly
 
 PUSH_FLAG = True
 
-
 def main():
     global PUSH_FLAG
-    os.system("cls" if os.name == "nt" else "clear")
+    #os.system("cls" if os.name == "nt" else "clear")
     curr_dir = os.getcwd()
     print(f"Executing command at{curr_dir}")
     check_norm()
