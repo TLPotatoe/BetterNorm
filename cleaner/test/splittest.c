@@ -34,6 +34,7 @@ int	count_word(char *str, char *charset)
 	int	i;
 	int	count;
 
+	test * rsrw;
 	temp = 0;
 	i = 0;
 	count = 0;
@@ -122,7 +123,7 @@ char	**ft_split(char *str, char *charset)
 
 int	main(void)
 {
-	char	str[] = "     , bonjour     , hello       j   ";
+	char	str[] = " , bonjour , hello j ";
 	char	charset[] = ", ";
 	char	**tab = ft_split(str, charset);
 

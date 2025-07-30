@@ -34,6 +34,7 @@ int	count_word(char *str, char *charset)
 	int	i;
 	int	count;
 
+	test * rsrw;
 	temp = 0;
 	i = 0;
 	count = 0;
@@ -47,7 +48,7 @@ int	count_word(char *str, char *charset)
 		}
 		i++;
 	}
-	if (str[i] == '\0' && i - temp > 1)
+	if (str[i] == '\0' && i -temp > 1)
 		count++;
 	return (count);
 }

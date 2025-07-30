@@ -4,7 +4,7 @@ from enums.keyword import keywords
 
 
 def fix_multiple_spaces(line):
-    if line.count("/*") < 0:
+    if line.count("/*") <= 0:
         line = re.sub(r" {2,}", " ", line)
     return line
 
@@ -42,7 +42,7 @@ def fix_space_operator(line, states):
         )
         # pointer exeption
         line = re.sub(
-            r"(?<![\+\-/%=!\(\[\}])\s*\t*\*\s*\t*(?![\+\-\*/%=!abcdefghijklmnopqrstuvwxyz\}\]\)])",
+            r"(?<![\+\-/%=!\(\[\}])\s*\t*\*\s*\t*(?![\+\-\*/%=!abcdefghijklmnopqrstuvwxyz\{\[\]\}\)])",
             r" * ",
             line,
         )
